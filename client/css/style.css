@@ -1,0 +1,198 @@
+
+#inventory-div {
+	width: 700px;
+	height: 600px;
+	background-color: #57270f;
+	border: 2px solid #29140a;
+	margin-top: -300px;
+	margin-left: -350px;
+	color: white;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	padding: 0;
+}
+
+#inventory-top-bar {
+	height: 20px;
+	width: 695px;
+	margin: 0;
+	background-color: #6b412e;
+	padding-left: 5px;
+}
+
+#inventory-list {
+	margin: 0;
+	padding: 0;
+}
+
+#inventory-div ul {
+	margin: 0;
+	height: 575px;
+	overflow-y: scroll;
+	background-color: rgba(0,0,0,0.7);
+}
+
+#inventory-div ul li {
+	margin-left: 0;
+}
+
+#inventory-div ul li:hover {
+	background-color: #666666;
+}
+
+#inventory-player-info {
+	float: none;
+	overflow: hidden;
+	position: relative;
+	padding: 0;
+}
+
+#inventory-item-info {
+	margin: 0;
+	padding: 0;
+	border-right: 2px solid #29140a;
+	height: 576px;
+}
+
+#inventory-item-icon {
+	background-color: #29140a;
+	margin: auto;
+	display: block;
+	margin-top: 5px;
+}
+
+#inventory-item-name, #inventory-item-description{
+	background-color: #6b412e;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+#inventory-item-actions {
+	position: absolute;
+	bottom: 0;
+	height: 50px;
+	width: 100%;
+}
+
+#inventory-item-actions button {
+	width: 100%;
+	background-color: #3d6b2e;
+	border-style: outset;
+	border-color: #2c5a1d;
+}
+
+#inventory-item-stats {
+	position: absolute;
+	bottom: 51px;
+	width: 100%;
+	padding-bottom: 5px;
+}
+
+#inventory-item-stats div {
+	position: relative;
+	padding: 0;
+}
+
+#inventory-item-stats img {
+	width: 80%;
+	display: block;
+	margin: auto;
+}
+
+#inventory-item-stats .center {
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -40%);
+  font-size: 18px;
+}
+
+#chat-div {
+	position: fixed;
+	overflow-y: auto;
+	bottom: 0;
+	left: 0;
+	width: 50%;
+	height: 520px;
+	background-color: rgba(0,0,0,0.5);
+}
+
+#chat-text {
+	background-color: none;
+	margin-bottom: 0;
+	color: white;
+	position: absolute;
+	width: 100%;
+	bottom: 21px;
+}
+
+#chat-div-game {
+	background-color: none;
+	padding: 0;
+	color: white;
+	position: fixed;
+	bottom: 21px;
+	width: 50%;
+}
+
+#chat-text-game {
+	background-color: rgba(0,0,0,0.5);
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+#chat-input {
+	background: none;
+	position: absolute;
+	bottom: 0;
+	border: none;
+	margin: 0;
+	width: 100%;
+	color: white;
+	height: 20px;
+}
+
+#gc {
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#mc {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 10;
+	background: green;
+}
+
+#respawn-div {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255,0,0,0.7);
+	color: white;
+	font-family: fantasy;
+	text-align: center;
+}
+
+#death-text {
+	margin: auto;
+}
+
+.chat-error {
+	color: #ff0000;
+	font-weight: bold;
+}

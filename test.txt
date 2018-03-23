@@ -1,0 +1,2 @@
+Wall({x: 100, y: 100, w: 200, h: 20, map: 0, emitters: []})
+Teleporter({x: 350, y: 250, map: 0, toX: 1, toY: 1, toMap: 1, emitters: [Emitter({sprite: "particle", lifeMin: 5, lifeMax: 10, speedMin: 1, speedMax: 2, count: 1, loop: true, time: 2})]})

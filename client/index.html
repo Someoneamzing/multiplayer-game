@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Game Tests</title>
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="client/js/const.js"></script>
+		<script src="client/js/main.js"></script>
+		<link rel="stylesheet" href="/client/css/style.css">
+	</head>
+	<body>
+		<div id="signDiv">
+			<div class="container-fluid">
+				<div id="signAlert" class='alert alert-danger' style="display: none;">Sign in unsuccessful.</div>
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="user" class="control-label col-sm-2">Username:</label><div class="control-label col-sm-10"><input type="text" id="user" class="form-control"></input></div>
+					</div>
+					<div class="form-group">
+						<label for="psw" class="control-label col-sm-2">Password:</label><div class="control-label col-sm-10"><input type="password" id="psw" class="form-control"></input></div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-10 col-sm-offset-2">
+							<button id="sign-in" class="btn btn-default" type="button">Sign In</button>
+							<button id="sign-up" class="btn btn-default" type="button">Sign Up</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="loadDiv" style="display: none; position: relative;">
+			<p id="loadItem"></p>
+			<div id="loadStatus" class='progress'>
+				<div class='progress-bar'></div>
+			</div>
+		</div>
+		<div id="gameDiv" style="display: none; position: relative;">
+			<canvas id="gc" width="640" height="480" style="border: solid black 1px;"></canvas>
+			<canvas id="mc" width="300" height="300" style='border: 2px solid grey;'></canvas>
+			<div id="inventory-div">
+				<div id="inventory-top-bar">Inventory<span id='inventory-dismiss'>&2716</span></div>
+				<div>
+					<div class='col-xs-4' id="inventory-list">
+						<ul class='list-unstyled'>
+							<!-- Inventory Container -->
+						</ul>
+					</div>
+					<div id='inventory-item-info' class='col-xs-4'>
+						<canvas id="inventory-item-icon"></canvas>
+						<div id='inventory-item-name'>Item Name</div>
+						<div id='inventory-item-description'>Description<br><br><br></div>
+						<div id='inventory-item-stats'><div class='col-xs-4' id="inventory-item-health"><img src='/client/img/stats_health.png'><p class='center'>0</p></div><div class='col-xs-4' id="inventory-item-defence"><img src='/client/img/stats_defence.png'><p class='center'>0</p></div><div class='col-xs-4' id="inventory-item-mana"><img src='/client/img/stats_mana.png'><p class='center'>0</p></div></div>
+						<div id='inventory-item-actions'><div class='col-xs-6'><button id="inventory-item-equip" type='button'>Equip</button></div><div class='col-xs-6'><button id="inventory-item-drop" type='button'>Drop</button></div></div>
+					</div>
+					<div id='inventory-player-info' class='col-xs-4'>
+						<canvas id='inventory-player-icon'></canvas>
+						<div id='inventory-player-equipment'></div>
+						<div id='inventory-player-stats'></div>
+					</div>
+				</div>
+			</div>
+			<div id="chat-div">
+				<div id="chat-text"></div>
+				<form id="chat-form">
+						<input id="chat-input" type="text" placeholder="Type to chat">
+				</form>
+			</div>
+			<div id="chat-div-game">
+				<div id='chat-text-game'></div>
+			</div>
+			<div id='respawn-div'>
+				<h1 id='death-text'></h1>
+			</div>
+		</div>
+	</body>
+</html>
