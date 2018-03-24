@@ -1,12 +1,26 @@
 //-------------------------- Define Server Params -------------------------------------
-var mongojs = require("mongojs");
-var db = mongojs('localhost:27017/myGame',['account','progress']);
+//var mongojs = require("mongojs");
+// var db = mongojs('localhost:27017/myGame',['account','progress']);
+const loki = require('lokijs')
 const fs = require('fs');
 
 var express = require('express');
 var app = express();
 var serv = require('http').Server(app);
-var GAME = require("./client/js/const");
+const GAME = require("./client/js/const");
+const DB_FILENAME = 'data.db';
+
+let accounts;
+
+//Init database 'connection':
+function initData(){
+	accounts = db.getCollection('accounts');
+	if(accounts === null){
+		accounts = db.addCollection('accounts');
+	}
+}
+
+const db = new loki(DB_FILENAME, {autosave: true, autoload: true, autoloadCallback: initData});
 
 //Define Proxy
 app.get('/', function(req, res) {
@@ -1001,25 +1015,22 @@ Player.emitUpdate = function(){
 var io = require('socket.io') (serv,{});
 
 var isValidPassword = function(data,cb){
-	db.account.find({username: data.username,password: data.password},function(err, res){
-		if(res.length > 0){
-			cb(true);
-		} else cb(false);
-	})
+	let res = accounts.find({username: data.username,password: data.password});
+	if(res.length > 0){
+		cb(true);
+	} else cb(false);
 }
 
 var isUsernameTaken = function(data,cb){
-	db.account.find({username: data.username},function(err, res){
-		if(res.length > 0){
-			cb(true);
-		} else cb(false);
-	})
+	let res = accounts.find({username: data.username})
+	if(res.length > 0){
+		cb(true);
+	} else cb(false);
 }
 
 var addUser = function(data,cb){
-	db.account.insert({username: data.username,password: data.password},function(err){
-		cb();
-	})
+	accounts.insert({username: data.username,password: data.password});
+	cb();
 }
 
 var isConnected = function(user){
@@ -1109,6 +1120,7 @@ io.sockets.on('connection', function(socket){
 	SOCKET_LIST[socket.id] = socket;
 	//Handle sign ins
 	socket.on('signIn',function(data){
+		console.log(data);
 		isValidPassword(data,function(res){
 			if(res && !isConnected(data.username)){
 				socket.emit('signInResponse',{
